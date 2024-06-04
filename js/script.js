@@ -207,12 +207,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Forms
     // 1 option
-    getResource('http://localhost:3000/menu')
-    .then(data => {
-        data.forEach(({img, altimg, title, descr, price}) => {
-            new MenuCard(img, altimg, title, descr, price, '.menu .container').render()
-        });
-    });
+    // getResource('http://localhost:3000/menu')
+    // .then(data => {
+    //     data.forEach(({img, altimg, title, descr, price}) => {
+    //         new MenuCard(img, altimg, title, descr, price, '.menu .container').render()
+    //     });
+    // });
 
     // 2 option
     // getResource('http://localhost:3000/menu')
@@ -239,7 +239,13 @@ window.addEventListener('DOMContentLoaded', () => {
     //     });
     // };
 
-
+    // 3 option by axios lib
+    axios.get('http://localhost:3000/menu')
+    .then(data => {
+        data.data.forEach(({img, altimg, title, descr, price}) => {
+            new MenuCard(img, altimg, title, descr, price, '.menu .container').render()
+        });
+    });
 
     const forms = document.querySelectorAll('form');
 
